@@ -3,20 +3,17 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Onas {
-
-    WebDriver driver;
+public class Onas extends BasePage{
 
     public Onas(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        visit("https://yeti.org.pl/o-nas/");
     }
 
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
-    }
     By photoYeti = By.xpath("//div[@class='dph-image']//img[@class='lazyloaded']");
 
-    public boolean getPhotoYeti() {
-        return driver.findElement(photoYeti).isDisplayed();
+    public By getPhotoYeti() {
+        return photoYeti;
     }
 }
+

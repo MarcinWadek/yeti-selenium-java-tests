@@ -9,18 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Glowna {
+public class Glowna extends BasePage {
 
     public Glowna(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+        super(driver);
+        visit("https://yeti.org.pl/");
     }
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
-    }
-
-    WebDriver driver;
-    WebDriverWait wait;
 
     By Rontil = By.cssSelector("div[class='slick-slide slick-cloned slick-active'] div img[title='RONTIL']");
 
@@ -35,16 +29,6 @@ public class Glowna {
     By JulekPeszko = By.xpath("//div[@class='slick-slide slick-active']//div//img[@title='Juliusz Peszko']");
 
     By GoSnow = By.xpath("//div[@class='slick-slide slick-active']//div//img[@title='Go Snow']");
-
-
-    public void clickElement(By locator) {
-        WebElement element = driver.findElement(locator);
-        element.click();
-    }
-    public void waitAndClick(By locator){
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        element.click();
-    }
 
     public By getRontil() {
         return Rontil;

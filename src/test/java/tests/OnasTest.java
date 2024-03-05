@@ -13,6 +13,8 @@ import pages.Onas;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class OnasTest {
 
 
@@ -25,9 +27,7 @@ public class OnasTest {
 
         driver = new ChromeDriver();
         onas = new Onas(driver);
-        driver.get("https://yeti.org.pl/o-nas/");
         onas.handleCookies();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @AfterEach
@@ -37,8 +37,15 @@ public class OnasTest {
 
     @Test
     void test_Photo_Yeti_Is_Displayed(){
-        Assertions.assertTrue(onas.getPhotoYeti());
-
+        Assertions.assertTrue(onas.isImageDisplayed(onas.getPhotoYeti()));
+    }
+    @Test
+    void test_Accurate_Title_In_HTML_Addres(){
+        assertThat(driver.getTitle()).isEqualTo("O Nas - Yeti");
+    }
+    @Test
+    void _test_Page_Source_Not_Corrupted(){
+        assertThat(driver.getPageSource()).containsIgnoringCase("</html>");
     }
 
 }

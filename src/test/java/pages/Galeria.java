@@ -7,38 +7,27 @@ import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Galeria {
-
-    WebDriver driver;
+public class Galeria extends BasePage {
 
     public Galeria(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        visit("https://yeti.org.pl/galeria");
     }
 
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
-    }
     By Ferie1 = By.xpath("(//h3[normalize-space()='Ferie 1'])[1]");
-
     By Rok = By.xpath("(//div[normalize-space()='ROK'])[1]");
     By rok2016 = By.xpath("(//span[normalize-space()='2016'])[1]");
     By closeRokWindow = By.xpath("//div[@class='dropdown-btn collapse']//span[@class='dbch-close'][contains(text(),'✕')]");
-
     By Sport = By.xpath("(//div[normalize-space()='SPORT'])[1]");
     By zagleSport = By.xpath("(//span[@class='filter-text'][contains(text(),'Żagle')])[1]");
-
     By rolkiSport = By.xpath("(//span[normalize-space()='Rolki'])[1]");
     By closeSportWindow = By.xpath("(//span[@class='dbch-close'][contains(text(),'✕')])[2]");
-
     By wyczyscGaleria = By.xpath("(//a[contains(text(),'WYCZYŚĆ')])[1]");
-
     By ferieGaleria = By.xpath("//h3[normalize-space()='Ferie 1']");
     By styczniowyGaleria = By.xpath("(//h3[contains(text(),'Styczniowy')])[1]");
     By photoOne = By.xpath("(//img[@class='wp-image-141435 lazyloaded'])[1]");
     By nextPhoto = By.xpath("(//button[@class='lg-next lg-icon'])[1]");
-
     By photoClose = By.xpath("(//span[@class='lg-close lg-icon'])[1]");
-
     By morePhotos = By.xpath("(//button[contains(text(),'Zobacz więcej')])[1]");
 
 

@@ -29,9 +29,7 @@ public class GlownaTest {
 
         driver.get("https://yeti.org.pl/");
         glowna.handleCookies();
-
     }
-
     @AfterEach
     void teardown() {
         driver.quit();
@@ -39,7 +37,7 @@ public class GlownaTest {
 
     @Test
     void test_Rontil_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getRontil());
+        glowna.clickElement(glowna.getRontil());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -54,7 +52,7 @@ public class GlownaTest {
 
     @Test
     void test_KrzysiekPomaga_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getKrzysiekPomaga());
+        glowna.clickElement(glowna.getKrzysiekPomaga());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -69,7 +67,7 @@ public class GlownaTest {
 
     @Test
     void test_Head_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getHead());
+        glowna.clickElement(glowna.getHead());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -84,7 +82,7 @@ public class GlownaTest {
 
     @Test
     void test_LekarzSport_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getLekarzSport());
+        glowna.clickElement(glowna.getLekarzSport());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -100,7 +98,7 @@ public class GlownaTest {
 
     @Test
     void test_TrainToWin_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getTrainToWin());
+        glowna.clickElement(glowna.getTrainToWin());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -115,7 +113,7 @@ public class GlownaTest {
 
     @Test
     void test_JulekPeszko_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getJulekPeszko());
+        glowna.clickElement(glowna.getJulekPeszko());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -130,7 +128,7 @@ public class GlownaTest {
 
     @Test
     void test_GoSnow_Page_Opens_Upon_Clicking_On_Logo() {
-        glowna.waitAndClick(glowna.getGoSnow());
+        glowna.clickElement(glowna.getGoSnow());
 
         String originalTab = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {

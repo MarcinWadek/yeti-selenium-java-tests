@@ -25,9 +25,7 @@ public class TreningiTest {
 
         driver = new ChromeDriver();
         treningi = new Treningi(driver);
-        driver.get("https://yeti.org.pl/treningi/");
         treningi.handleCookies();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @AfterEach

@@ -25,11 +25,8 @@ public class HeaderTest {
 
         driver = new ChromeDriver();
         header = new Header(driver);
-        driver.get("https://yeti.org.pl/");
         header.handleCookies();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
-
     @AfterEach
     void teardown(){
         driver.quit();

@@ -3,17 +3,13 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Treningi {
-
-WebDriver driver;
+public class Treningi extends BasePage {
 
 public Treningi(WebDriver driver){
-    this.driver = driver;
+    super(driver);
+    visit("https://yeti.org.pl/treningi/");
 }
 
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
-    }
 By Grafik = By.xpath("(//h2[normalize-space()='Grafik treningów'])[1]");
 By GrafikPonLocator = By.xpath("(//div[@class='col-md-8'])[2]");
 By GrafikCzwLocator = By.xpath("(//div[@class='col-md-8'])[3]");

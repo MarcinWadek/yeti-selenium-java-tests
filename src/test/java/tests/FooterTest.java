@@ -6,13 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import pages.Footer;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,9 +23,7 @@ public class FooterTest {
 
         driver = new ChromeDriver();
         footer = new Footer(driver);
-        driver.get("https://yeti.org.pl/");
         footer.handleCookies();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         footer.goDown();
     }
 
@@ -38,9 +32,10 @@ public class FooterTest {
         driver.quit();
     }
 
+
     @Test
-    void isLogoPresent() {
-        Assertions.assertTrue(footer.footerPresent());
+    void yeti() {
+        Assertions.assertTrue(footer.isImageDisplayed(footer.getFooter_logo()));
     }
 
     @Test

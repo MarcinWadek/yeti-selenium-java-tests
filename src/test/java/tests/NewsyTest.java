@@ -25,9 +25,7 @@ public class NewsyTest {
 
         driver = new ChromeDriver();
         newsy = new Newsy(driver);
-        driver.get("https://yeti.org.pl/newsy/");
         newsy.handleCookies();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @AfterEach

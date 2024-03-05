@@ -1,27 +1,19 @@
 package pages;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.time.Duration;
+public class Footer extends BasePage {
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class Footer {
-
-    WebDriver driver;
 
     public Footer(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        visit("https://yeti.org.pl/");
     }
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
-    }
+
     By footer_strona_Glowna = By.xpath("(//a[@href='https://yeti.org.pl/'][contains(text(),'Strona główna')])[1]");
     By footer_oNas = By.xpath("(//a[normalize-space()='O Nas'])[2]");
     By footer_newsy = By.xpath("(//a[normalize-space()='Newsy'])[2]");
@@ -40,10 +32,6 @@ public class Footer {
     By footer_Newsletter_Wyslij = By.xpath("(//img[@src='https://yeti.org.pl/wp-content/themes/yeti-org-pl/assets/images/arrow-right.svg'])[1]");
     By footer_logo = By.xpath("//div[@class='f-logo']//img[@class='lazyloaded']");
 
-    public void clickElement(By locator) {
-        WebElement element = driver.findElement(locator);
-        element.click();
-    }
 
     public void signupForNewsletter(String email) {
         driver.findElement(footer_Newsletter_Email).sendKeys(email);
@@ -51,13 +39,9 @@ public class Footer {
         driver.findElement(footer_Newsletter_Wyslij).click();
     }
 
-
-    public void goDown(){
+    public void goDown() {
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.END).perform();
-    }
-    public boolean footerPresent() {
-        return driver.findElement(footer_logo).isDisplayed();
     }
 
     public By getFooter_strona_Glowna() {

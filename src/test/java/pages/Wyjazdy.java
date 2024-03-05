@@ -1,24 +1,16 @@
 package pages;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class Wyjazdy {
-
-    WebDriver driver;
+public class Wyjazdy extends BasePage{
 
     public Wyjazdy(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        visit("https://yeti.org.pl/wyjazdy/");
     }
 
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
-    }
     By wyjazdy_Marzec = By.xpath("(//button[normalize-space()='Mar'])[1]");
     By wyjazdy_Kwiecien = By.xpath("(//button[normalize-space()='Kwi'])[1]");
     By wyjazdy_Maj = By.xpath("(//button[normalize-space()='Maj'])[1]");
@@ -31,7 +23,6 @@ public class Wyjazdy {
     By wyjazdy_Grudzien = By.xpath("(//button[normalize-space()='Gru'])[1]");
     By wyjazdy_Styczen = By.xpath("(//button[normalize-space()='Sty'])[1]");
     By wyjazdy_Luty = By.xpath("(//button[normalize-space()='Lut'])[1]");
-
 
 
     By wyjazdy_Oboz_Ferie1 = By.xpath("(//h3[normalize-space()='Obóz ferie 1'])[1]");
@@ -55,6 +46,7 @@ public class Wyjazdy {
         WebElement element = driver.findElement(locator);
         element.click();
     }
+
     public void chooseTour(By sport, By grupa, By typ) {
         driver.findElement(wyjazdy_Sport).click();
         WebElement elementSport = driver.findElement(sport);
@@ -67,6 +59,7 @@ public class Wyjazdy {
         elementTyp.click();
         driver.findElement(wyjazdy_Close_WindowTyp).click();
     }
+
     public void clearTour() {
         driver.findElement(By.xpath("(//a[contains(text(),'WYCZYŚĆ')])[1]")).click();
     }

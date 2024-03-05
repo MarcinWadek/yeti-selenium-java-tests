@@ -16,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GaleriaTest {
 
-
     WebDriver driver;
     Galeria galeria;
 
@@ -26,10 +25,7 @@ public class GaleriaTest {
 
         driver = new ChromeDriver();
         galeria = new Galeria(driver);
-
-        driver.get("https://yeti.org.pl/galeria");
         galeria.handleCookies();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @AfterEach

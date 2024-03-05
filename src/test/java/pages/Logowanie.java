@@ -8,16 +8,11 @@ import org.openqa.selenium.WebElement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Logowanie {
-
-    WebDriver driver;
+public class Logowanie extends BasePage{
 
     public Logowanie(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void handleCookies(){
-        driver.findElement(By.xpath("//div[@class='cmi-close']")).click();
+        super(driver);
+        visit("https://yeti.org.pl/logowanie/");
     }
     By logowanie_Email = By.xpath("//input[@name='user_email']");
     By logowanie_Haslo = By.name("user_password");
@@ -29,7 +24,6 @@ public class Logowanie {
     By reset_Hasla = By.linkText("Nie pamiętasz hasła?");
     By reset_Input_Email = By.xpath("//input[@name='user_email']");
     By reset_Submit = By.xpath("//button[contains(text(),'Resetuj hasło')]");
-
 
     By rejestracja_First_Name = By.xpath("//input[@name='first_name']");
     By rejestracja_Last_Name = By.xpath("//input[@name='last_name']");

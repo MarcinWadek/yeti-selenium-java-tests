@@ -1,0 +1,63 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Treningi extends BasePage {
+
+public Treningi(WebDriver driver){
+    super(driver);
+    visit("https://yeti.org.pl/treningi/");
+    PageFactory.initElements(driver, this);
+}
+
+    @FindBy(xpath = "(//h2[normalize-space()='Grafik treningów'])[1]")
+    private WebElement Grafik;
+
+    @FindBy(xpath = "(//div[@class='col-md-8'])[2]")
+    private WebElement GrafikPonLocator;
+
+    @FindBy(xpath = "(//div[@class='col-md-8'])[3]")
+    private WebElement GrafikCzwLocator;
+
+
+    public Wyjazdy checkTreningi(WebElement element){
+        element.click();
+        return new Wyjazdy(driver);
+    }
+
+String GrafikPonText = "    17:00 - 18:00\n" +
+            "yetiludki\n" +
+            "/\n" +
+            "klasa 1-3\n" +
+            "18:00 - 19:00\n" +
+            "młodsi\n" +
+            "/\n" +
+            "klasa 4-6\n" +
+            "19:00 - 20:00\n" +
+            "starsi\n" +
+            "/\n" +
+            "klasa 7-8 + liceum\n" +
+            "20:00 - 20:45\n" +
+            "senior\n" +
+            "/";
+
+String GrafikCzwText = "18:30 - 19:15\n" +
+            "yetiludki\n" +
+            "/\n" +
+            "klasa 1-3\n" +
+            "19:15 - 20:00\n" +
+            "młodsi\n" +
+            "/\n" +
+            "klasa 4-6\n" +
+            "18:30 - 19:15\n" +
+            "starsi\n" +
+            "/\n" +
+            "klasa 7-8 + liceum\n" +
+            "19:15 - 20:00\n" +
+            "senior\n" +
+            "/";
+}

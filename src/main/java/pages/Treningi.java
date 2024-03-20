@@ -1,10 +1,14 @@
 package pages;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Treningi extends BasePage {
 
@@ -23,12 +27,28 @@ public Treningi(WebDriver driver){
     @FindBy(xpath = "(//div[@class='col-md-8'])[3]")
     private WebElement GrafikCzwLocator;
 
+    @FindBy(xpath = "//h1[contains(text(), 'Treningi')]")
+    private WebElement pageTitle;
+
 
     public Wyjazdy checkTreningi(WebElement element){
         element.click();
         return new Wyjazdy(driver);
     }
 
+    public Treningi assertPageTitle(String expectedVale) {
+        assertEquals(expectedVale, pageTitle.getText());
+        return this;
+    }
+    Treningi test_Monday_Trainings_On_Page(){
+        Assertions.assertEquals(GrafikPonText, GrafikPonLocator.getText());
+        return this;
+    }
+
+    Treningi test_Thursday_Trainings_On_Page(){
+        Assertions.assertEquals(GrafikCzwText, GrafikCzwLocator.getText());
+        return this;
+    }
 String GrafikPonText = "    17:00 - 18:00\n" +
             "yetiludki\n" +
             "/\n" +

@@ -12,13 +12,22 @@ import pages.Treningi;
 
 public class TreningiTest extends BaseTest {
 
+Treningi treningi;
 
-//    @Test
-//    void test_Monday_Trainings_On_Page(){
-//        Assertions.assertEquals(treningi.getGrafikPonText(), driver.findElement(treningi.getGrafikPon()).getText());
-//    }
-//    @Test
-//    void test_Thursday_Trainings_On_Page(){
-//        Assertions.assertEquals(treningi.getGrafikCzwText(), driver.findElement(treningi.getGrafikCzw()).getText());
-//    }
+@BeforeEach
+void setTreningi(){
+    treningi = new Treningi(driver);
+}
+    @Test
+    void test_Page_Title(){
+       treningi.assertPageTitle("treningi");
+    }
+    @Test
+    void test_Monday_Trainings_On_Page(){
+        test_Monday_Trainings_On_Page();
+}
+    @Test
+    void test_Thursday_Trainings_On_Page(){
+        test_Thursday_Trainings_On_Page();
+    }
 }

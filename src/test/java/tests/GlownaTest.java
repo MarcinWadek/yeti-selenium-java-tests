@@ -11,55 +11,56 @@ import pages.Glowna;
 
 public class GlownaTest extends BaseTest{
 
+    Glowna glowna;
+
+    @BeforeEach
+    void setGlowna(){
+        glowna = new Glowna(driver);
+        glowna.setTimeoutSec(20);
+        glowna.handleCookies();
+    }
 
     @Test
     void test_Rontil_Page_Opens_Upon_Clicking_On_Logo() {
-    new Glowna(driver).redirectToRontil();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("https://rontil.com.pl/pl/", currentUrl);
+        glowna.redirectToRontil()
+                .verifyURL("https://rontil.com.pl/pl/");
     }
 
     @Test
     void test_KrzysiekPomaga_Page_Opens_Upon_Clicking_On_Logo() {
-        new Glowna(driver).redirectToKrzysiek();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("https://krzysiekpomaga.org/", currentUrl);
+        glowna.redirectToKrzysiek()
+                .verifyURL("https://krzysiekpomaga.org/");
     }
 
     @Test
     void test_Head_Page_Opens_Upon_Clicking_On_Logo() {
-        new Glowna(driver).redirectToHead();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("https://www.head.com/pl_PL/", currentUrl);
+        glowna.redirectToHead()
+         .verifyURL("https://www.head.com/pl_PL/");
     }
 
     @Test
     void test_LekarzSport_Page_Opens_Upon_Clicking_On_Logo() {
-        new Glowna(driver).redirectToLekarzSport();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("https://lekarzsport.pl/", currentUrl);
+       glowna.redirectToLekarzSport()
+               .verifyURL("https://lekarzsport.pl/");
 
     }
 
     @Test
     void test_TrainToWin_Page_Opens_Upon_Clicking_On_Logo() {
-        new Glowna(driver).redirectToTraintoWin();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("https://traintowin.pl/", currentUrl);
+       glowna.redirectToTraintoWin()
+               .verifyURL("https://traintowin.pl/");
     }
 
     @Test
     void test_JulekPeszko_Page_Opens_Upon_Clicking_On_Logo() {
-        new Glowna(driver).redirectToJulek();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("https://juliuszpeszko.pl/", currentUrl);
+        glowna.redirectToJulek()
+        .verifyURL("https://juliuszpeszko.pl/");
     }
 
     @Test
     void test_GoSnow_Page_Opens_Upon_Clicking_On_Logo() {
-        new Glowna(driver).redirectToGoSnow();
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals("http://go-snow.pl/", currentUrl);
+        new Glowna(driver).redirectToGoSnow()
+                .verifyURL("http://go-snow.pl/");
     }
 
 }

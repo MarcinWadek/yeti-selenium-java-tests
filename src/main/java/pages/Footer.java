@@ -49,6 +49,8 @@ public class Footer extends BasePage {
     public WebElement footer_Newsletter_Wyslij;
     @FindBy(xpath = "//div[@class='f-logo']//img[@class='lazyloaded']")
     public WebElement footer_logo;
+    @FindBy(xpath = "(//span[@id='es_subscription_message_65e489eb12726'])[1]")
+    public WebElement footer_sub;
 
     public void browsingThroughPages() {
         handleCookies();
@@ -78,8 +80,5 @@ public class Footer extends BasePage {
         footer_WebCrafter.click();
         redirectToNewTab();
     }
-    public void verifyURL(String URLtoVerify){
-        String currentUrl = driver.getCurrentUrl();
-        Assertions.assertEquals(URLtoVerify, currentUrl);
-    }
+
 }

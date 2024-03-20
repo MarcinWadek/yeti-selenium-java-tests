@@ -19,7 +19,6 @@ public abstract class BaseTest {
     @BeforeEach
     public void baseBeforeClass() {
         ChromeOptions options = new ChromeOptions();
-        // https://peter.sh/experiments/chromium-command-line-switches/
         options.addArguments("disable-infobars");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-gpu");
@@ -30,7 +29,7 @@ public abstract class BaseTest {
         options.addArguments("--log-level=3");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
         driver.get("https://yeti.org.pl/");
     }

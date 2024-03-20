@@ -61,6 +61,10 @@ public class Galeria extends BasePage {
     @FindBy(xpath = "(//button[contains(text(),'Zobacz więcej')])[1]")
     public WebElement morePhotos;
 
+    @FindBy(xpath = "//h3[normalize-space()='Lodowiec wiosenny']")
+    public WebElement lodowiecWiosenny;
+
+
     public Logowanie checkGaleria(WebElement element) {
         element.click();
         return new Logowanie(driver);
@@ -77,12 +81,20 @@ public class Galeria extends BasePage {
         album.click();
     }
 
-    public void filtrGaleria(WebElement rokWybor, WebElement sport) {
+    public void filtrGaleria(WebElement rokWybor, WebElement sportWybor) {
+        rok.click();
         rokWybor.click();
         sport.click();
+        sportWybor.click();
         closeSportWindow.click();
     }
-
+    public void filtrGaleria1() {
+        rok.click();
+        rok2016.click();
+        sport.click();
+        rolkiSport.click();
+        closeSportWindow.click();
+    }
     public void clearGaleria() {
         wyczyscGaleria.click();
     }

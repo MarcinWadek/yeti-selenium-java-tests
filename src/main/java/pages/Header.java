@@ -49,8 +49,9 @@ public class Header extends BasePage {
                 .checkTreningi(header_Wyjazdy)
                 .checkWyjazdy(header_Galeria)
                 .checkGaleria(header_Logowanie)
-                .checkLogowanie(header_ONas);
-    }
+                .checkLogowanie(header_ONas)
+                .verifyURL("https://yeti.org.pl/o-nas/");
 
+    }
 
 }

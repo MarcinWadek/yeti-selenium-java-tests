@@ -13,7 +13,7 @@ public class Glowna extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "div[class='slick-slide slick-cloned slick-active'] div img[title='RONTIL']")
+    @FindBy(css = "div[class='slick-slide slick-active'] div img[title='RONTIL']")
     public WebElement rontil;
 
     @FindBy(css = "div[class='slick-slide slick-cloned slick-active'] div img[title='KPP']")
@@ -34,39 +34,46 @@ public class Glowna extends BasePage {
     @FindBy(xpath = "//div[@class='slick-slide slick-active']//div//img[@title='Go Snow']")
     public WebElement goSnow;
 
-    public void redirectToRontil() {
+    public Glowna redirectToRontil() {
         rontil.click();
         redirectToNewTab();
+        return this;
     }
 
-    public void redirectToKrzysiek() {
+    public Glowna redirectToKrzysiek() {
         krzysiekPomaga.click();
         redirectToNewTab();
+        return this;
     }
 
-    public void redirectToHead() {
+    public Glowna redirectToHead() {
         head.click();
         redirectToNewTab();
+        return this;
     }
 
-    public void redirectToLekarzSport() {
+    public Glowna redirectToLekarzSport() {
         lekarzSport.click();
         redirectToNewTab();
+        return this;
     }
 
-    public void redirectToTraintoWin() {
+    public Glowna redirectToTraintoWin() {
         trainToWin.click();
         redirectToNewTab();
+        return this;
     }
 
-    public void redirectToJulek() {
+    public Glowna redirectToJulek() {
         julekPeszko.click();
         redirectToNewTab();
+        return this;
     }
 
-    public void redirectToGoSnow() {
+    public Glowna redirectToGoSnow() {
         goSnow.click();
         redirectToNewTab();
+        return this;
     }
 
 }

@@ -13,51 +13,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class HeaderTest extends BaseTest {
 
 
-    @Test
-    void navigatingThroughPages(){
-        new Header(driver).browsingThroughPages();
+    Header header;
+
+    @BeforeEach
+    void setHeader() {
+        header = new Header(driver);
     }
 
-
-
-
-
-
-
-
-//    @Test
-//    void test_If_logowanie_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_Logowanie());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/logowanie/");
-//    }
-//    @Test
-//    void test_If_galeria_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_Galeria());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/galeria");
-//    }
-//    @Test
-//    void test_If_wyjazdy_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_Wyjazdy());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/wyjazdy/");
-//    }
-//    @Test
-//    void test_If_treningi_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_Treningi());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/treningi");
-//    }
-//    @Test
-//    void test_If_newsy_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_Newsy());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/newsy/");
-//    }
-//    @Test
-//    void test_If_oNas_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_ONas());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/o-nas/");
-//    }
-//    @Test
-//    void test_If_strona_Glowna_Redirect_To_Repsective_Page(){
-//        header.clickElement(header.getHeader_Strona_Glowna());
-//        assertThat(driver.getCurrentUrl()).isEqualTo("https://yeti.org.pl/");
-//    }
+    @Test
+    void navigatingThroughPages() {
+        header.browsingThroughPages();
+        header.verifyURL("https://yeti.org.pl/o-nas/");
+    }
 }

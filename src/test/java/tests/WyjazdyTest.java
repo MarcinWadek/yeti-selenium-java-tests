@@ -10,29 +10,49 @@ import pages.Wyjazdy;
 
 public class WyjazdyTest extends BaseTest {
 
-//    @Test
-//    void test_Filter_Tour() {
-//        wyjazdy.chooseTour(wyjazdy.getWyjazdy_Narty(), wyjazdy.getWyjazdy_Senior(), wyjazdy.getWyjazdy_Oboz());
-////        Assertions.assertTrue(driver.findElement(By.xpath("//h3[normalize-space()='Szkolenie narciarskie']")).isDisplayed(),
-////                "The <h3> element with text 'Szkolenie narciarskie' is not present on the page");
-//    }
-//
-//    @Test
-//    void test_That_Only_One_Element_Is_Displayed_After_Filter_Usage() {
-//        wyjazdy.chooseTour(wyjazdy.getWyjazdy_Narty(), wyjazdy.getWyjazdy_Senior(), wyjazdy.getWyjazdy_Oboz());
-////        List<WebElement> wyjazdyAfterFilter = driver.findElements(By.partialLinkText("narciarskie"));
-////        Assertions.assertEquals(1, wyjazdyAfterFilter.size());
-//    }
-//
-//    @Test
-//    void test_Browse_Month() {
-//        wyjazdy.chooseMonth(wyjazdy.getWyjazdy_Czerwiec());
-//    }
-//
-//    @Test
-//    void test_clear_Button() {
-//        wyjazdy.chooseMonth(wyjazdy.getWyjazdy_Czerwiec());
-//        wyjazdy.clearTour();
-//    }
+    Wyjazdy wyjazdy;
 
-}
+    @BeforeEach
+    void setWyjazdy(){
+        wyjazdy = new Wyjazdy(driver);
+        wyjazdy.handleCookies();
+    }
+
+    @Test
+    void test_Different_Month_Selection_April(){
+        wyjazdy.chooseKwiecien()
+                .assertActiveMonth("2024-04-01", "2024-04-30");
+    }
+    @Test
+    void test_Different_Month_Selection_December(){
+        wyjazdy.chooseGrudzien()
+                .assertActiveMonth("2024-12-01", "2024-12-31");
+    }
+    @Test
+    void test_Tour_Filter_Per_Month(){
+        wyjazdy.chooseKwiecien()
+                .assertToursAfterFilter(1);
+    }
+    @Test
+    void test_Clear_Button(){
+        wyjazdy.chooseKwiecien()
+                .assertToursAfterFilter(1)
+                .clearTour()
+                .assertToursAfterFilter(5);
+    }
+    @Test
+    void test_Tour_Filter_Per_Month_June(){
+        wyjazdy.chooseCzerwiec()
+                .assertToursAfterFilter(2);
+    }
+
+    @Test
+    void test_All_Filters(){
+        wyjazdy.chooseWindsurfing()
+                .assertToursAfterFilter(1)
+                .chooseGroup()
+                .assertToursAfterFilter(1)
+                .chooseType()
+                .assertToursAfterFilter(1);
+    }
+    }

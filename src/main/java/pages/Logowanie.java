@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class Logowanie extends BasePage {
 
     public Logowanie(WebDriver driver) {
@@ -65,6 +67,13 @@ public class Logowanie extends BasePage {
 
     @FindBy(xpath = "(//button[contains(text(),'ZAREJETRUJ')])[1]")
     private WebElement rejestracja_Zarejestruj;
+    @FindBy(xpath = "//div[@class='yeti-notification error']")
+    private WebElement error_Notification;
+    @FindBy(xpath =   "//li[normalize-space()='Podany e-mail nie istnieje w naszej bazie danych']")
+    private WebElement error_Password_Reset;
+    @FindBy(xpath =   "//li[contains(text(),'Hasła nie pasują do siebie.')]")
+    private WebElement error_Password_Missmatch_Registration;
+
 
     public Logowanie checkLogowanie(WebElement element) {
         element.click();
@@ -95,6 +104,15 @@ public class Logowanie extends BasePage {
         rejestracja_Regulamin.click();
         rejestracja_PrzetwarzanieDanych.click();
         rejestracja_Zarejestruj.submit();
+        return this;
+    }
+
+    public Logowanie assertLoginReturnInfo(String expected_value){
+        assertEquals(expected_value, error_Notification.getText());
+        return this;
+    }
+    public Logowanie assertPasswordResetReturnInfo(String expected_value){
+        assertEquals(expected_value, error_Password_Reset.getText());
         return this;
     }
 

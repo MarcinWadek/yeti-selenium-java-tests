@@ -16,41 +16,47 @@ public class GaleriaTest extends BaseTest{
 
     @BeforeEach
     void setGaleria(){
+        driver.get(config.getGalleryURL());
         galeria = new Galeria(driver);
         galeria.handleCookies();
+
+
     }
     @Test
-    void test_If_Photos_Are_Displayed() {
-        galeria.seePhotos(galeria.ferieGaleria, galeria.photoOne);
-        galeria.verifyURL("https://yeti.org.pl/galeria/ferie-1/");
+    void test_If_Ferie1_Album_Is_Displayed() {
+        galeria.seeFerie1()
+                .verifyURL("https://yeti.org.pl/galeria/ferie-1/");
     }
-
     @Test
-    void test_Album_Is_Displayed() {
-        galeria.seeAlbum(galeria.styczniowyGaleria);
-        galeria.verifyURL("https://yeti.org.pl/galeria/styczniowy-2024/");
+    void test_If_Ferie2_Album_Is_Displayed() {
+        galeria.seeFerie2()
+                .verifyURL("https://yeti.org.pl/galeria/ferie-2/");
     }
-
+    @Test
+    void test_Styczniowy_Album_Is_Displayed() {
+        galeria.seeStyczniowy()
+        .verifyURL("https://yeti.org.pl/galeria/styczniowy-2024/");
+    }
+    @Test
+    void test_Lodowiec_Album_Is_Displayed() {
+        galeria.seeLodowiec()
+                .verifyURL("https://yeti.org.pl/galeria/lodowiec/");
+    }
     @Test
     void test_If_Can_See_More_Photos() {
-        galeria.seeMorePhotos();
-        galeria.elementDisplayed(galeria.lodowiecWiosenny);
-    }
-
-    @Test
-    void test_Galeria_Filter() {
-        galeria.filtrGaleria(galeria.rok2016, galeria.rolkiSport);
-        galeria.elementNotDisplayed(galeria.ferieGaleria);
+        galeria.seeMorePhotos()
+                .assertNumberOfAlbumsDisplayed(18);
     }
     @Test
-    void test_Galeria_Filter1() {
-        galeria.filtrGaleria1();
-//        galeria.elementNotDisplayed(galeria.ferieGaleria);
+    void test_Galeria_Check_Filter() {
+        galeria.choose2018()
+                .chooseZagle()
+                .assertNumberOfAlbumsDisplayed(1);
     }
     @Test
-    void test_If_Clear_Galeria_Clears() {
-        galeria.seeMorePhotos();
-        galeria.clearGaleria();
-        galeria.elementNotDisplayed(galeria.lodowiecWiosenny);
+    void test_If_Clear_Button_Works() {
+        galeria.seeMorePhotos()
+                .clearGaleria()
+                .assertNumberOfAlbumsDisplayed(9);
     }
 }

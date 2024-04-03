@@ -9,11 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Logowanie extends BasePage {
+public class Logowanie extends Footer {
 
     public Logowanie(WebDriver driver) {
         super(driver);
-        visit("https://yeti.org.pl/logowanie/");
         PageFactory.initElements(driver, this);
     }
 
@@ -69,26 +68,28 @@ public class Logowanie extends BasePage {
     private WebElement rejestracja_Zarejestruj;
     @FindBy(xpath = "//div[@class='yeti-notification error']")
     private WebElement error_Notification;
-    @FindBy(xpath =   "//li[normalize-space()='Podany e-mail nie istnieje w naszej bazie danych']")
+    @FindBy(xpath = "//li[normalize-space()='Podany e-mail nie istnieje w naszej bazie danych']")
     private WebElement error_Password_Reset;
-    @FindBy(xpath =   "//li[contains(text(),'Hasła nie pasują do siebie.')]")
+    @FindBy(xpath = "//li[contains(text(),'Hasła nie pasują do siebie.')]")
     private WebElement error_Password_Missmatch_Registration;
+    @FindBy(css = "h1[class='d-header']")
+    private WebElement no_Access_Message;
 
 
-    public Logowanie checkLogowanie(WebElement element) {
-        element.click();
+    public Footer checkLogowanie() {
+        footer_strona_Glowna.click();
         return this;
     }
 
     public Logowanie reset_Password(String email) {
         reset_Hasla.click();
-        type(reset_Input_Email,email);
+        type(reset_Input_Email, email);
         reset_Submit.click();
         return this;
     }
 
     public Logowanie logIn(String email, String password) {
-        type(logowanie_Email,email);
+        type(logowanie_Email, email);
         type(logowanie_Haslo, password);
         logowanie_Submit.submit();
         return this;
@@ -98,22 +99,31 @@ public class Logowanie extends BasePage {
         dolacz_Do_Klubu.click();
         type(rejestracja_First_Name, firstName);
         type(rejestracja_Last_Name, lastName);
-        type(rejestracja_Email,email);
-        type(rejestracja_Password,password);
-        type(rejestracja_PasswordRepeat,passwordRepeat);
+        type(rejestracja_Email, email);
+        type(rejestracja_Password, password);
+        type(rejestracja_PasswordRepeat, passwordRepeat);
         rejestracja_Regulamin.click();
         rejestracja_PrzetwarzanieDanych.click();
         rejestracja_Zarejestruj.submit();
         return this;
     }
+    public Logowanie visit(String url) {
+        driver.get(url);
+        return this;
+    }
 
-    public Logowanie assertLoginReturnInfo(String expected_value){
+    public Logowanie assertLoginReturnInfo(String expected_value) {
         assertEquals(expected_value, error_Notification.getText());
         return this;
     }
-    public Logowanie assertPasswordResetReturnInfo(String expected_value){
+
+    public Logowanie assertPasswordResetReturnInfo(String expected_value) {
         assertEquals(expected_value, error_Password_Reset.getText());
         return this;
     }
 
+    public Logowanie assertAccessInformation(String expected_value) {
+        assertEquals(expected_value, no_Access_Message.getText());
+        return this;
+    }
 }

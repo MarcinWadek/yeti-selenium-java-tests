@@ -14,6 +14,7 @@ public class WyjazdyTest extends BaseTest {
 
     @BeforeEach
     void setWyjazdy(){
+        driver.get(config.getToursURL());
         wyjazdy = new Wyjazdy(driver);
         wyjazdy.handleCookies();
     }

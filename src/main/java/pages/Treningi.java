@@ -10,29 +10,28 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Treningi extends BasePage {
+public class Treningi extends Footer {
 
 public Treningi(WebDriver driver){
     super(driver);
-    visit("https://yeti.org.pl/treningi/");
     PageFactory.initElements(driver, this);
 }
 
     @FindBy(xpath = "(//h2[normalize-space()='Grafik treningów'])[1]")
     private WebElement Grafik;
 
-    @FindBy(xpath = "(//div[@class='col-md-8'])[2]")
+    @FindBy(xpath = "(//div[@class='col-md-8'])[1]")
     private WebElement GrafikPonLocator;
 
-    @FindBy(xpath = "(//div[@class='col-md-8'])[3]")
+    @FindBy(xpath = "(//div[@class='col-md-8'])[2]")
     private WebElement GrafikCzwLocator;
 
     @FindBy(xpath = "//h1[contains(text(), 'Treningi')]")
     private WebElement pageTitle;
 
 
-    public Wyjazdy checkTreningi(WebElement element){
-        element.click();
+    public Wyjazdy checkTreningi(){
+        footer_wyjazdy.click();
         return new Wyjazdy(driver);
     }
 
@@ -40,30 +39,30 @@ public Treningi(WebDriver driver){
         assertEquals(expectedVale, pageTitle.getText());
         return this;
     }
-    Treningi test_Monday_Trainings_On_Page(){
+    public Treningi verifyMondayTrainingsText(){
         Assertions.assertEquals(GrafikPonText, GrafikPonLocator.getText());
         return this;
     }
 
-    Treningi test_Thursday_Trainings_On_Page(){
+    public Treningi verifyThursdayTrainingsText(){
         Assertions.assertEquals(GrafikCzwText, GrafikCzwLocator.getText());
         return this;
     }
-String GrafikPonText = "    17:00 - 18:00\n" +
-            "yetiludki\n" +
-            "/\n" +
-            "klasa 1-3\n" +
-            "18:00 - 19:00\n" +
-            "młodsi\n" +
-            "/\n" +
-            "klasa 4-6\n" +
-            "19:00 - 20:00\n" +
-            "starsi\n" +
-            "/\n" +
-            "klasa 7-8 + liceum\n" +
-            "20:00 - 20:45\n" +
-            "senior\n" +
-            "/";
+String GrafikPonText = "17:00 - 18:00\n" +
+        "yetiludki\n" +
+        "/\n" +
+        "klasa 1-3\n" +
+        "18:00 - 19:00\n" +
+        "młodsi\n" +
+        "/\n" +
+        "klasa 4-6\n" +
+        "19:00 - 20:00\n" +
+        "starsi\n" +
+        "/\n" +
+        "klasa 7-8 + liceum\n" +
+        "20:00 - 20:45\n" +
+        "senior\n" +
+        "/";
 
 String GrafikCzwText = "18:30 - 19:15\n" +
             "yetiludki\n" +

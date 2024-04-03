@@ -80,6 +80,10 @@ public class BasePage {
         String currentUrl = driver.getCurrentUrl();
         Assertions.assertEquals(URLtoVerify, currentUrl);
     }
+    public void assertURLNotModified(String desiredURL){
+        String currentUrl = driver.getCurrentUrl();
+        Assertions.assertNotEquals(desiredURL, currentUrl);
+    }
     public boolean isDisplayed(WebElement element){
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));

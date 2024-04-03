@@ -18,11 +18,12 @@ public class HeaderTest extends BaseTest {
     @BeforeEach
     void setHeader() {
         header = new Header(driver);
+        header.handleCookies();
     }
 
     @Test
     void navigatingThroughPages() {
         header.browsingThroughPages();
-        header.verifyURL("https://yeti.org.pl/o-nas/");
+        header.verifyURL("https://yeti.org.pl/");
     }
 }

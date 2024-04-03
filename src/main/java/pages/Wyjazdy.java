@@ -10,11 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Wyjazdy extends BasePage{
+public class Wyjazdy extends Footer{
 
     public Wyjazdy(WebDriver driver) {
         super(driver);
-        visit("https://yeti.org.pl/wyjazdy/");
         PageFactory.initElements(driver, this);
     }
 
@@ -109,19 +108,22 @@ public class Wyjazdy extends BasePage{
     @FindAll(@FindBy(css = "a[class='tl-single tl-single-trip single-post-in-loop']"))
     private List<WebElement> toursAvailable;
 
-    public Galeria checkWyjazdy(WebElement element){
-        element.click();
+    public Galeria checkWyjazdy(){
+        footer_galeria.click();
         return new Galeria(driver);
     }
 
-    public void chooseStyczen() {
+    public Wyjazdy chooseStyczen() {
         wyjazdy_Styczen.click();
+        return this;
     }
-    public void chooseLuty() {
+    public Wyjazdy chooseLuty() {
         wyjazdy_Luty.click();
+        return this;
     }
-    public void chooseMarzec() {
+    public Wyjazdy chooseMarzec() {
         wyjazdy_Marzec.click();
+        return this;
     }
     public Wyjazdy chooseKwiecien() {
         wyjazdy_Kwiecien.click();
@@ -131,22 +133,8 @@ public class Wyjazdy extends BasePage{
         wyjazdy_Czerwiec.click();
         return this;
     }
-
-
     public Wyjazdy chooseGrudzien() {
         wyjazdy_Grudzien.click();
-        return this;
-    }
-
-    public Wyjazdy chooseTour(WebElement sport, WebElement grupa, WebElement typ) {
-        wyjazdy_Sport.click();
-        sport.click();
-        wyjazdy_Close_WindowTyp.click();
-        wyjazdy_Grupa.click();
-        grupa.click();
-        wyjazdy_Typ.click();
-        typ.click();
-        wyjazdy_Close_WindowTyp.click();
         return this;
     }
 

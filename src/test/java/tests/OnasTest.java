@@ -15,7 +15,9 @@ public class OnasTest extends BaseTest{
 
     @BeforeEach
     void setOnas() {
+        driver.get(config.getAboutUsURL());
         onas = new Onas(driver);
+
     }
     @Test
     void test_Accurate_Title_In_HTML_Addres() {

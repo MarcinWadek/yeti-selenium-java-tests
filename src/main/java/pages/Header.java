@@ -7,11 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class Header extends BasePage {
+public class Header extends Footer {
 
     public Header(WebDriver driver) {
         super(driver);
-        visit("https://yeti.org.pl/");
         PageFactory.initElements(driver, this);
     }
 
@@ -42,16 +41,16 @@ public class Header extends BasePage {
     @FindBy(xpath = "(//a[@href='mailto:biuro@yeti.org.pl'][normalize-space()='biuro@yeti.org.pl'])[1]")
     private WebElement email;
 
-    public void browsingThroughPages() {
-        new Onas(driver)
-                .checkOnas(header_Newsy)
-                .checkNewsy(header_Treningi)
-                .checkTreningi(header_Wyjazdy)
-                .checkWyjazdy(header_Galeria)
-                .checkGaleria(header_Logowanie)
-                .checkLogowanie(header_ONas)
-                .verifyURL("https://yeti.org.pl/o-nas/");
-
-    }
+//    public void browsingThroughPages() {
+//        new Onas(driver)
+//                .checkOnas(header_Newsy)
+//                .checkNewsy(header_Treningi)
+//                .checkTreningi(header_Wyjazdy)
+//                .checkWyjazdy(header_Galeria)
+//                .checkGaleria(header_Logowanie)
+//                .checkLogowanie(header_ONas)
+//                .verifyURL("https://yeti.org.pl/o-nas/");
+//
+//    }
 
 }

@@ -8,11 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Onas extends BasePage{
+public class Onas extends Footer{
 
     public Onas(WebDriver driver) {
         super(driver);
-        visit("https://yeti.org.pl/o-nas/");
         PageFactory.initElements(driver, this);
     }
     @FindBy(xpath = "//div[@class='dph-image']//img[@class='lazyloaded']")
@@ -20,8 +19,8 @@ public class Onas extends BasePage{
     @FindBy(xpath = "//div/span[contains(text(), 'Nas')]")
     private WebElement pageTitle;
 
-    public Newsy checkOnas(WebElement element){
-        element.click();
+    public Newsy checkOnas(){
+        footer_newsy.click();
         return new Newsy(driver);
     }
 

@@ -11,7 +11,6 @@ public class Footer extends BasePage {
 
     public Footer(WebDriver driver) {
         super(driver);
-        visit("https://yeti.org.pl/");
         PageFactory.initElements(driver, this);
     }
 
@@ -52,33 +51,64 @@ public class Footer extends BasePage {
     @FindBy(xpath = "(//span[@id='es_subscription_message_65e489eb12726'])[1]")
     public WebElement footer_sub;
 
-    public void browsingThroughPages() {
-        handleCookies();
+    public Footer browsingThroughPages() {
         new Onas(driver)
-                .checkOnas(footer_newsy)
-                .checkNewsy(footer_treningi)
-                .checkTreningi(footer_wyjazdy)
-                .checkWyjazdy(footer_galeria)
-                .checkGaleria(footer_logowanie)
-                .checkLogowanie(footer_oNas);
+                .checkGlowna()
+                .checkOnas()
+                .checkNewsy()
+                .checkTreningi()
+                .checkWyjazdy()
+                .checkGaleria()
+                .checkLogowanie();
+        return this;
+    }
+    public Onas checkGlowna(){
+        footer_oNas.click();
+        return new Onas(driver);
     }
 
-
-    public void signupForNewsletter(String email) {
+    public Footer signupForNewsletter(String email) {
         handleCookies();
         footer_Newsletter_Email.click();
         footer_Newsletter_Zgoda.click();
         footer_Newsletter_Wyslij.click();
+        return this;
     }
 
-    public void redirectToZofia() {
+    public Footer redirectToZofia() {
         footer_Zofia.click();
         redirectToNewTab();
+        return this;
     }
-
-    public void redirectToWebCrafter() {
+    public Footer redirectToWebCrafter() {
         footer_WebCrafter.click();
         redirectToNewTab();
+        return this;
+    }
+    public Footer redirectToYoutube() {
+        footer_Yt.click();
+        redirectToNewTab();
+        return this;
+    }
+    public Footer redirectToInstagram() {
+        footer_Ig.click();
+        redirectToNewTab();
+        return this;
+    }
+    public Footer redirectToFacebook() {
+        footer_Fb.click();
+        redirectToNewTab();
+        return this;
     }
 
+    public Footer redirectToPolicyPage(){
+        footer_PolitykaPrywatnosci.click();
+        return this;
+    }
+
+
+    public Footer assertSubConfirmationText(String expectedText){
+        Assertions.assertEquals(expectedText, footer_sub.getText());
+        return this;
+    }
 }

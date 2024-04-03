@@ -9,7 +9,6 @@ public class Glowna extends BasePage {
 
     public Glowna(WebDriver driver) {
         super(driver);
-        visit("https://yeti.org.pl/");
         PageFactory.initElements(driver, this);
     }
 

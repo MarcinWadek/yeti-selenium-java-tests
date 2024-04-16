@@ -1,13 +1,15 @@
 package config;
 
-import com.github.javafaker.Faker;
-
 import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
 
     private Properties properties;
+
+    public Config() {
+        properties = getProperties();
+    }
 
     private Properties getProperties() {
         Properties prop = new Properties();
@@ -20,41 +22,47 @@ public class Config {
         return prop;
     }
 
-    public Config (){
-        properties = getProperties();
-    }
-
-    public String getApplicationURL () {
+    public String getApplicationURL() {
         return properties.getProperty("application.url");
     }
-    public String getGalleryURL () {
+
+    public String getGalleryURL() {
         return properties.getProperty("gallery.url");
     }
-    public String getLoginURL () {
+
+    public String getLoginURL() {
         return properties.getProperty("login.url");
     }
-    public String getNewsURL () {
+
+    public String getNewsURL() {
         return properties.getProperty("news.url");
     }
-    public String getAboutUsURL () {
+
+    public String getAboutUsURL() {
         return properties.getProperty("aboutus.url");
     }
-    public String getTrainingURL () {
+
+    public String getTrainingURL() {
         return properties.getProperty("trainings.url");
     }
-    public String getToursURL () {
+
+    public String getToursURL() {
         return properties.getProperty("tours.url");
     }
-    public String getApplicationUser () {
+
+    public String getApplicationUser() {
         return properties.getProperty("application.user");
     }
-    public String getApplicationPassword () {
+
+    public String getApplicationPassword() {
         return properties.getProperty("application.password");
     }
-    public String getApplicationFirstName () {
+
+    public String getApplicationFirstName() {
         return properties.getProperty("application.firstName");
     }
-    public String getApplicationLastName () {
+
+    public String getApplicationLastName() {
         return properties.getProperty("application.lastName");
     }
 

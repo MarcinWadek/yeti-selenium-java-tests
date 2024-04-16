@@ -1,17 +1,11 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import config.Config;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.BeforeClass;
-import pages.BasePage;
-import pages.Footer;
 
 import java.time.Duration;
 
@@ -37,12 +31,13 @@ public abstract class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
         driver.get(config.getApplicationURL());
-        }
+    }
 
     @AfterEach
     void teardown() {
         driver.quit();
     }
+
     public void baseAfterMethod() {
         driver.manage().deleteAllCookies();
     }

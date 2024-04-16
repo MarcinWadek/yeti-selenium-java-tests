@@ -2,7 +2,6 @@ package pages;
 
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -14,15 +13,8 @@ import java.util.List;
 
 public class Galeria extends Footer {
 
-    public Galeria(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
-
     @FindBy(xpath = "(//div[normalize-space()='ROK'])[1]")
     public WebElement rok;
-
     @FindBy(xpath = "(//span[normalize-space()='2016'])[1]")
     public WebElement rok2016;
     @FindBy(xpath = "(//span[normalize-space()='2017'])[1]")
@@ -31,16 +23,12 @@ public class Galeria extends Footer {
     public WebElement rok2018;
     @FindBy(xpath = "(//span[normalize-space()='2019'])[1]")
     public WebElement rok2019;
-
     @FindBy(xpath = "//div[@class='dropdown-btn collapse']//span[@class='dbch-close'][contains(text(),'✕')]")
     public WebElement closeRokWindow;
-
     @FindBy(xpath = "(//div[normalize-space()='SPORT'])[1]")
     public WebElement sport;
-
     @FindBy(xpath = "(//span[@class='filter-text'][contains(text(),'Żagle')])[1]")
     public WebElement zagleSport;
-
     @FindBy(xpath = "(//span[normalize-space()='Rolki'])[1]")
     public WebElement rolkiSport;
     @FindBy(xpath = "(//span[normalize-space()='Surfing'])[1]")
@@ -51,10 +39,8 @@ public class Galeria extends Footer {
     public WebElement nartySport;
     @FindBy(xpath = "(//span[@class='dbch-close'][contains(text(),'✕')])[2]")
     public WebElement closeSportWindow;
-
     @FindBy(xpath = "(//a[contains(text(),'WYCZYŚĆ')])[1]")
     public WebElement wyczyscGaleria;
-
     @FindBy(xpath = "//h3[normalize-space()='Ferie 1']")
     public WebElement ferie1;
     @FindBy(xpath = "(//h3[normalize-space()='Ferie 2'])[1]")
@@ -67,20 +53,21 @@ public class Galeria extends Footer {
     public WebElement lodowiec;
     @FindBy(xpath = "(//img[@class='wp-image-141435 lazyloaded'])[1]")
     public WebElement Ferie1_Photo1;
-
     @FindBy(xpath = "(//button[@class='lg-next lg-icon'])[1]")
     public WebElement nextPhoto;
     @FindBy(xpath = "(//button[@class='lg-prev lg-icon'])[1]")
     public WebElement previousPhoto;
-
     @FindBy(xpath = "(//span[@class='lg-close lg-icon'])[1]")
     public WebElement photoClose;
-
     @FindBy(xpath = "(//button[contains(text(),'Zobacz więcej')])[1]")
     public WebElement morePhotos;
-
-    @FindAll(@FindBy (css = "div[style*=\"display: block;\"]"))
+    @FindAll(@FindBy(css = "div[style*=\"display: block;\"]"))
     private List<WebElement> albumsAvailable;
+
+    public Galeria(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     public Logowanie checkGaleria() {
         footer_logowanie.click();
@@ -122,6 +109,7 @@ public class Galeria extends Footer {
         rolkiSport.click();
         return this;
     }
+
     public Galeria chooseNarty() {
         sport.click();
         nartySport.click();

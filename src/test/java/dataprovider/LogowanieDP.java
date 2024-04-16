@@ -1,17 +1,17 @@
 package dataprovider;
 
 import com.github.javafaker.Faker;
-import tests.BaseTest;
 
-public class LogowanieDP  {
+public class LogowanieDP {
 
     Faker faker = new Faker();
 
     public String getValidPassword() {
         return faker.internet().password(8, 15);
     }
+
     public String getInvalidPassword() {
-        return faker.internet().password(1,7);
+        return faker.internet().password(1, 7);
     }
 
     public String getOneCharPassword() {
@@ -21,12 +21,13 @@ public class LogowanieDP  {
     public String getSevenCharPassword() {
         return faker.number().digits(7);
     }
+
     public String getLowerCasePassword() {
-        return faker.internet().password(8,15).toLowerCase();
+        return faker.internet().password(8, 15).toLowerCase();
     }
 
     public String getUpperCasePassword() {
-        return faker.internet().password(8,15).toUpperCase();
+        return faker.internet().password(8, 15).toUpperCase();
     }
 
     public String getOneHundredCharPassword() {
@@ -36,6 +37,7 @@ public class LogowanieDP  {
     public String getPasswordWithoutNumbers() {
         return faker.internet().password(8, 20, false, false, false);
     }
+
     public String getPasswordWithOnlyNumbers() {
         return faker.number().digits(8);
     }
@@ -65,7 +67,7 @@ public class LogowanieDP  {
     }
 
     public String getOnHundredCharEmail() {
-        return faker.internet().password(100,101) + "@";
+        return faker.internet().password(100, 101) + "@";
     }
 
     public String getInvalidFistName() {

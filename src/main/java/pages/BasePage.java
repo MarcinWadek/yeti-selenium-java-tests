@@ -1,7 +1,10 @@
 package pages;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -46,10 +49,6 @@ public class BasePage {
         cookies.click();
     }
 
-    public void click(WebElement element) {
-        element.click();
-    }
-
     public void clickElement(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 
@@ -61,10 +60,7 @@ public class BasePage {
 
     public void goDown() {
         Actions actions = new Actions(driver);
-        actions.sendKeys(Keys.END).perform();
-    }
-
-    public void navigate() {
+        actions.sendKeys(Keys.END).perform();;
     }
 
     public void redirectToNewTab() {
@@ -76,27 +72,37 @@ public class BasePage {
             }
         }
     }
-    public void verifyURL(String URLtoVerify){
+
+    public String verifyURL(String URLtoVerify) {
         String currentUrl = driver.getCurrentUrl();
         Assertions.assertEquals(URLtoVerify, currentUrl);
+        return driver.getCurrentUrl();
     }
-    public void assertURLNotModified(String desiredURL){
+
+    public void assertURLNotModified(String desiredURL) {
         String currentUrl = driver.getCurrentUrl();
         Assertions.assertNotEquals(desiredURL, currentUrl);
     }
-    public boolean isDisplayed(WebElement element){
+
+    public boolean isDisplayed(WebElement element) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
-            return true;  // Element is clickable, implying it is displayed
+            return true;
         } catch (TimeoutException e) {
-            return false; // Element is not clickable within the timeout, hence not displayed
+            return false;
         }
+    }
+
+    public void sendWithEnter(){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ENTER).perform();
     }
 
 
     public void elementDisplayed(WebElement element) {
         Assertions.assertTrue(isDisplayed(element));
     }
+
     public void elementNotDisplayed(WebElement element) {
         Assertions.assertFalse(isDisplayed(element));
     }

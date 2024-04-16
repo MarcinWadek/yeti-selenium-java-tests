@@ -1,7 +1,7 @@
 package pages;
 
 
-import org.openqa.selenium.By;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,59 +11,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Logowanie extends Footer {
 
-    public Logowanie(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
     @FindBy(xpath = "//input[@name='user_email']")
     private WebElement logowanie_Email;
-
     @FindBy(name = "user_password")
     private WebElement logowanie_Haslo;
-
     @FindBy(xpath = "(//button[normalize-space()='Zaloguj'])[1]")
     private WebElement logowanie_Submit;
-
     @FindBy(xpath = "(//a[contains(text(),'Dołącz do klubu')])[1]")
     private WebElement dolacz_Do_Klubu;
-
     @FindBy(xpath = "//span[@class='ylsl-name']")
     private WebElement przeczytaj_Regulamin;
-
     @FindBy(linkText = "Nie pamiętasz hasła?")
     private WebElement reset_Hasla;
-
     @FindBy(xpath = "//input[@name='user_email']")
     private WebElement reset_Input_Email;
-
     @FindBy(xpath = "//button[contains(text(),'Resetuj hasło')]")
     private WebElement reset_Submit;
-
     @FindBy(xpath = "//input[@name='first_name']")
     private WebElement rejestracja_First_Name;
-
     @FindBy(xpath = "//input[@name='last_name']")
     private WebElement rejestracja_Last_Name;
-
     @FindBy(xpath = "//input[@name='user_email']")
     private WebElement rejestracja_Email;
-
     @FindBy(xpath = "//input[@name='user_password']")
     private WebElement rejestracja_Password;
-
     @FindBy(xpath = "//input[@name='user_password_repeat']")
     private WebElement rejestracja_PasswordRepeat;
-
     @FindBy(xpath = "//label[@for='regulations_aprove']//span[1]")
     private WebElement rejestracja_Regulamin;
-
     @FindBy(xpath = "(//span[contains(text(),'Wyrażam zgodę na przetwarzanie moich danych zgodni')])[1]")
     private WebElement rejestracja_PrzetwarzanieDanych;
-
     @FindBy(xpath = "(//span[normalize-space()='Zapisz mnie do newslettera.'])[1]")
     private WebElement rejestracja_Zapisz_Do_Newslettera;
-
     @FindBy(xpath = "(//button[contains(text(),'ZAREJETRUJ')])[1]")
     private WebElement rejestracja_Zarejestruj;
     @FindBy(xpath = "//div[@class='yeti-notification error']")
@@ -75,6 +54,13 @@ public class Logowanie extends Footer {
     @FindBy(css = "h1[class='d-header']")
     private WebElement no_Access_Message;
 
+    @FindBy(xpath = "(//a[contains(text(),'WYLOGUJ')])[1]")
+    private WebElement logout;
+
+    public Logowanie(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     public Footer checkLogowanie() {
         footer_strona_Glowna.click();
@@ -107,9 +93,19 @@ public class Logowanie extends Footer {
         rejestracja_Zarejestruj.submit();
         return this;
     }
+    public Logowanie logout(){
+    logout.click();
+    return this;
+    }
+
+
     public Logowanie visit(String url) {
         driver.get(url);
         return this;
+    }
+    public Wyjazdy wyjazdyForSignUp(){
+        footer_wyjazdy.click();
+        return new Wyjazdy(driver);
     }
 
     public Logowanie assertLoginReturnInfo(String expected_value) {

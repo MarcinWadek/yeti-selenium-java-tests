@@ -7,31 +7,25 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Glowna extends BasePage {
 
+    @FindBy(css = "div[class='slick-slide slick-active'] div img[title='RONTIL']")
+    public WebElement rontil;
+    @FindBy(css = "div[class='slick-slide slick-cloned slick-active'] div img[title='KPP']")
+    public WebElement krzysiekPomaga;
+    @FindBy(xpath = "//div[@class='slick-slide slick-cloned slick-active']//div//img[@title='HEAD']")
+    public WebElement head;
+    @FindBy(xpath = "(//img[@title='Lekarz Sport'])[2]")
+    public WebElement lekarzSport;
+    @FindBy(xpath = "(//img[@title='TTW'])[2]")
+    public WebElement trainToWin;
+    @FindBy(xpath = "//div[@class='slick-slide slick-active']//div//img[@title='Juliusz Peszko']")
+    public WebElement julekPeszko;
+    @FindBy(xpath = "//div[@class='slick-slide slick-active']//div//img[@title='Go Snow']")
+    public WebElement goSnow;
+
     public Glowna(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(css = "div[class='slick-slide slick-active'] div img[title='RONTIL']")
-    public WebElement rontil;
-
-    @FindBy(css = "div[class='slick-slide slick-cloned slick-active'] div img[title='KPP']")
-    public WebElement krzysiekPomaga;
-
-    @FindBy(xpath = "//div[@class='slick-slide slick-cloned slick-active']//div//img[@title='HEAD']")
-    public WebElement head;
-
-    @FindBy(xpath = "(//img[@title='Lekarz Sport'])[2]")
-    public WebElement lekarzSport;
-
-    @FindBy(xpath = "(//img[@title='TTW'])[2]")
-    public WebElement trainToWin;
-
-    @FindBy(xpath = "//div[@class='slick-slide slick-active']//div//img[@title='Juliusz Peszko']")
-    public WebElement julekPeszko;
-
-    @FindBy(xpath = "//div[@class='slick-slide slick-active']//div//img[@title='Go Snow']")
-    public WebElement goSnow;
 
     public Glowna redirectToRontil() {
         rontil.click();

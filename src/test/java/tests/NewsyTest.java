@@ -1,14 +1,8 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.Newsy;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class NewsyTest extends BaseTest {
 
@@ -38,11 +32,13 @@ public class NewsyTest extends BaseTest {
         newsy.news_Stroje()
                 .verifyURL("https://yeti.org.pl/stroje-klubowe-2024-25/");
     }
+
     @Test
     void test_News_Zamowienia_Opens_Upon_Clicking_On_It() {
         newsy.news_Zamowienia()
                 .verifyURL("https://yeti.org.pl/zamowienia-head-na-sezon-2024-2025/");
     }
+
     @Test
     void test_News_Szkolenia_Opens_Upon_Clicking_On_It() {
         newsy.news_Szkolenia()
@@ -50,7 +46,7 @@ public class NewsyTest extends BaseTest {
     }
 
     @Test
-    void test_Newsy_Page_Navigation(){
+    void test_Newsy_Page_Navigation() {
         newsy.page_News()
                 .news_Stroje()
                 .page_News()

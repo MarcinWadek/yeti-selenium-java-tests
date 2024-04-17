@@ -1,5 +1,5 @@
 # Selenium Web Testing
-Testing the frontend with Selenium
+Automated functional testing of [https://yeti.org.pl/](https://yeti.org.pl/) as a part o collaboration with follow.studio.
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -16,6 +16,7 @@ Testing the frontend with Selenium
 
 ## General Information
 - The goal of this project was to show how I approach testing webpages
+- It is a standard Maven Java project with regular java folder structure and POM.xml
 - I aimed at creating robust framework, without flacky tests, with reduced time of test performance.
 
 ## Technologies Used
@@ -30,7 +31,10 @@ Testing the frontend with Selenium
 - BasePage class in pages package contains the most important methods which are inhertied by other classes.
 - BaseTest class in tests package contatins common setup and teardown annotations which are inherited by other classes.
 - BaseTest also initialize chromeOptions settings in order to reduce the time of test performance.
-- 
+- Assertionsa are written as a methods in page classes to make them reusable.
+- Allure annotations are included to increase readability for non technical users, better clarity and in order to generate the report.
+- The project is also configured as a Jenkins job.
+  
 
 ## Screenshots
 
@@ -50,7 +54,7 @@ mvn test
 
 Example:
 $ git clone https://github.com/MarcinWadek/yeti-selenium-java-tests.git
-$ cd PetStore
+$ cd Yeti
 $ mvn clean install
 $ mvn test
 
@@ -69,4 +73,3 @@ Room for improvement:
 
 To do:
 - Add usage description and screenshots to the readme.md
-- Implement allure annotations

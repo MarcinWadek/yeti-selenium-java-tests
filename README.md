@@ -1,5 +1,5 @@
 # Selenium Web Testing
-Automated functional testing of [https://yeti.org.pl/](https://yeti.org.pl/) as a part o collaboration with follow.studio.
+Automated functional testing of [https://yeti.org.pl/](https://yeti.org.pl/) as a part of collaboration with the follow.studio.
 
 ## Table of Contents
 * [General Info](#general-information)

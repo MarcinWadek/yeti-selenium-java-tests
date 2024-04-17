@@ -16,6 +16,11 @@ pipeline {
                            jdk: '',
                            results: [[path: 'build/allure-results']]
                 }
+                    post {
+                        always {
+                            archiveArtifacts artifacts: 'allure-results/*.html'
+                        }
+                    }
             }
         }
     }

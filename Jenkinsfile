@@ -15,7 +15,7 @@ pipeline {
                     allure includeProperties: false,
                            jdk: '',
                            results: [[path: 'build/allure-results']]
-                    archiveArtifacts artifacts: 'allure-results/*.html'
+                    archiveArtifacts artifacts: 'allure-results/*.'
                 }
             }
         }

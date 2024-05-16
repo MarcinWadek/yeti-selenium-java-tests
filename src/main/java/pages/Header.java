@@ -1,10 +1,14 @@
 package pages;
 
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.time.Duration;
 
 
 public class Header extends Footer {
@@ -26,7 +30,7 @@ public class Header extends Footer {
     @FindBy(xpath = "(//a[contains(text(),'+48 601-396-601')])[1]")
     private WebElement header_Telefon;
     @FindBy(xpath = "(//a[@href='mailto:biuro@yeti.org.pl'][normalize-space()='biuro@yeti.org.pl'])[1]")
-    private WebElement email;
+    private WebElement header_Email;
 
     public Header(WebDriver driver) {
         super(driver);
@@ -43,6 +47,14 @@ public class Header extends Footer {
                 .checkLogowanie()
                 .verifyURL("https://yeti.org.pl/");
 
+        return this;
+    }
+public Header checkTelephone(){
+        elementDisplayed(header_Telefon);
+        return this;
+    }
+    public Header checkEmail(){
+        elementDisplayed(header_Email);
         return this;
     }
 

@@ -72,7 +72,7 @@ public class Footer extends BasePage {
     public Footer signupForNewsletter(String email) {
         footer_Newsletter_Zgoda.click();
         footer_Newsletter_Email.sendKeys(email);
-        footer_Newsletter_Email.sendKeys(Keys.ENTER);
+        footer_Newsletter_Wyslij.click();
         return this;
     }
 

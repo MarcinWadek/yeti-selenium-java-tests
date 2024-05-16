@@ -26,4 +26,19 @@ public class HeaderTest extends BaseTest {
         header.browsingThroughPages();
         header.verifyURL("https://yeti.org.pl/");
     }
+
+    @Test
+    @Epic("Website Architecture")
+    @Feature("MainPage")
+    @DisplayName("Veryfing if  telephone number is visible in header")
+    void isTelephoneDisplayed(){
+        header.checkTelephone();
+    }
+    @Test
+    @Epic("Website Architecture")
+    @Feature("MainPage")
+    @DisplayName("Veryfing if email address is visible")
+    void isEmailDisplayed(){
+        header.checkEmail();
+    }
 }

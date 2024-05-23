@@ -26,7 +26,14 @@ public class HeaderTest extends BaseTest {
         header.browsingThroughPages();
         header.verifyURL("https://yeti.org.pl/");
     }
-
+    @Test
+    @Epic("Navigation")
+    @Feature("MainPage")
+    @DisplayName("Veryfing if Yeti Logo navigate to main page")
+    void checkYetiLogo() {
+        header.checkLogo();
+        header.verifyURL("https://yeti.org.pl/");
+    }
     @Test
     @Epic("Website Architecture")
     @Feature("MainPage")

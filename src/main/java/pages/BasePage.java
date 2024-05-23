@@ -17,7 +17,7 @@ public class BasePage {
 
     WebDriver driver;
     WebDriverWait wait;
-    int timeoutSec = 60;
+    int timeoutSec = 20;
 
     @FindBy(xpath = "//div[@class='cmi-close']")
     WebElement cookies;

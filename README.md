@@ -39,7 +39,7 @@ Automated functional testing of [https://yeti.org.pl/](https://yeti.org.pl/) as 
 ## Screenshots
 
 ## Setup
-Setup Instructions
+Setup Instructions:
 To set up your local environment and get started with the project, follow these steps:
 
 Clone the Repository:
